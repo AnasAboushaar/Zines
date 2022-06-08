@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ magazine.name }}</td>
                     <td>
-                        <a href="">Voir plus de détail</a>
+                        <a href="{{ path('details_magazine', { id: magazine.id }) }}">Voir plus de détail</a>
                     </td>
                 </tr>
             {% endfor %}
