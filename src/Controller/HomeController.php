@@ -16,4 +16,10 @@ class HomeController extends AbstractController
             'magazines' => $magazineRepository->findAll(),
         ]);
     }
+
+    #[Route('/magazine/{id}', name: 'details_magazine', requirements:['id' => '\d+'])]
+    public function details(int $id): Response
+    {
+        return $this->render('home/details.html.twig');
+    }
 }
