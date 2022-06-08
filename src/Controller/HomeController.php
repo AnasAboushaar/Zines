@@ -13,13 +13,15 @@ class HomeController extends AbstractController
     public function index(MagazineRepository $magazineRepository): Response
     {
         return $this->render('home/index.html.twig', [
-            'magazines' => $magazineRepository->findAll(),
+            'magazines' => $magazineRepository->findAll()
         ]);
     }
 
     #[Route('/magazine/{id}', name: 'details_magazine', requirements:['id' => '\d+'])]
-    public function details(int $id): Response
+    public function details(int $id, MagazineRepository $magazineRepository): Response
     {
-        return $this->render('home/details.html.twig');
+        return $this->render('home/details.html.twig', [
+            'magazine' => $magazineRepository->find($id)
+        ]);
     }
 }
