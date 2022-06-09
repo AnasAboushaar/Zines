@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\MagazineRepository;
+use App\Entity\Magazine;
 
 class HomeController extends AbstractController
 {
@@ -18,10 +19,10 @@ class HomeController extends AbstractController
     }
 
     #[Route('/magazine/{id}', name: 'details_magazine', requirements:['id' => '\d+'])]
-    public function details(int $id, MagazineRepository $magazineRepository): Response
+    public function details(Magazine $magazine): Response
     {
         return $this->render('home/details.html.twig', [
-            'magazine' => $magazineRepository->find($id)
+            'magazine' => $magazine
         ]);
     }
 }
